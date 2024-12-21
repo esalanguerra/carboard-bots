@@ -1,0 +1,61 @@
+const mongoose = require("mongoose");
+
+const Schema = mongoose.Schema;
+
+const carSchema = new Schema({
+  idCar: { type: Number, unique: true },
+  seller: { type: String },
+  name: { type: String },
+  price: { type: Number },
+  owners: { type: String },
+  condition: { type: String },
+  mileage: { type: Number },
+  year: { type: Number, min: 1900, max: 2024 },
+  engine: { type: String },
+  gearbox: { type: String },
+  inspected: { type: String },
+  driveType: { type: String },
+  plate: { type: String },
+  power: { type: String },
+  topSpeed: { type: String },
+  acceleration: { type: String },
+  numberOfPeople: { type: Number },
+  numberOfDoors: { type: Number },
+  safety: { type: String },
+  espercifications: {
+    power: { type: String },
+    topSpeed: { type: String },
+    acceleration: { type: String },
+    numberOfPeople: { type: Number },
+    numberOfDoors: { type: Number },
+    meterReading: { type: String },
+    enginePower: { type: String },
+    engineVolume: { type: String },
+    driveType: { type: String },
+    gearbox: { type: String },
+    torque: { type: String },
+    co2Emissions: { type: String },
+    fuelConsumption: { type: String },
+    weight: { type: String },
+    ownWeight: { type: Number },
+    totalWeight: { type: Number },
+    towingWeight: { type: Number },
+    towingWeightNonBraked: { type: Number },
+  },
+  transmissionSystem: { type: String },
+  inspection: { type: String },
+  interior: { type: String },
+  electronics: { type: String },
+  additionalInformation: { type: String },
+  others: { type: String },
+  images: [{ type: String }],
+  phone: { type: String },
+  link: { type: String },
+  createdAt: { type: Date, default: Date.now },
+  updatedAt: { type: Date, default: Date.now },
+  messages: [{ type: Schema.Types.ObjectId, ref: "messages" }],
+});
+
+const Car = mongoose.model("cars", carSchema);
+
+module.exports = Car;
